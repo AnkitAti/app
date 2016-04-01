@@ -28,7 +28,7 @@
 					<input type="submit" class="btn btn-default" onclick="" value="Login" />
 				</fieldset>
 			</s:form>
-			<div class="col-md-offset-2 col-md-7 alert alert-danger">
+			<div class="col-md-offset-2 col-md-7">
 				<s:if test="#request.error!=null">
 					<s:property value="#request.error" />
 					<s:set scope="request" var="error" value="null"></s:set>
