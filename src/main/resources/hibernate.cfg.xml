@@ -12,7 +12,7 @@
 
 		<!-- Assume test is the database name -->
 		<property name="hibernate.connection.url">
-			jdbc:mysql://127.12.78.130:3306/
+			jdbc:mysql://127.12.78.130:3306/app
 		</property>
 		<property name="hibernate.connection.username">
 			adminLjgZKxD
