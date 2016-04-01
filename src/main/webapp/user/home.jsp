@@ -9,6 +9,7 @@
 	</head>
 	<body>
 		<jsp:include page="/common/header.jsp"></jsp:include>
+		<br><br><br>
 		<h1>Logged in</h1>
 	</body>
 </html>

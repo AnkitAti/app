@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
   <Appenders>
-    <File name="A1" fileName="D:\\Eclipse\\Application\\Application.log" append="false">
+    <File name="A1" fileName="/var/lib/openshift/56fd62432d527136b100014f/app-root/logs/Application.log" append="false">
       <PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
     </File>
     <Console name="STDOUT" target="SYSTEM_OUT">
