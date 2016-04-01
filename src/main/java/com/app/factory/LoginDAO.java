@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.app.exception.ApplicationException;
 import com.app.factory.beans.User;
@@ -21,7 +22,10 @@ public class LoginDAO {
 		logger.trace("Entering constructor of LoginDAO");
 		Session session = Connection.getInstance().openSession();
 		String hql = "FROM User user WHERE user.username = :username OR user.email = :email" ;
+		Transaction transaction = null;
 		try {
+			
+			transaction = session.beginTransaction();
 			Query query = session.createQuery(hql).setString("username", input).setString("email", input);
 			ArrayList<User> list = (ArrayList<User>) query.list();
 			
@@ -33,7 +37,15 @@ public class LoginDAO {
 				user = null;
 			else
 				user = list.get(0);
+			transaction.commit();
+			
 		} catch(HibernateException | ApplicationException ex) {
+			if(transaction!=null) 
+				transaction.rollback();
+			logger.debug("Exception in the constructor of LoginDAO. \n" + ex);
+		} catch(Exception ex) {
+			if(transaction!=null) 
+				transaction.rollback();
 			logger.debug("Exception in the constructor of LoginDAO. \n" + ex);
 		}
 		finally {

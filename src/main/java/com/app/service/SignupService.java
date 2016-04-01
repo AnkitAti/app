@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.app.factory.CommonServicesDAO;
 import com.app.factory.SignupDAO;
 import com.app.factory.beans.User;
 import com.app.security.HashService;
@@ -31,10 +32,10 @@ public class SignupService {
 	}
 	
 	public static boolean usernameExists(String username) {
-		return SignupDAO.usernameExist(username);
+		return CommonServicesDAO.usernameExist(username);
 	}
 	
 	public static boolean emailExists(String email) {
-		return SignupDAO.emailExists(email);
+		return CommonServicesDAO.emailExists(email);
 	}
 }
