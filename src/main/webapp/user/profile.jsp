@@ -5,12 +5,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initialscale=1.0">
-		<title>Welcome <s:property value="#session.username"/></title>
+		<title> <s:property value="#session.username"/> Profile</title>
 		<jsp:include page="/common/res.html"></jsp:include>
 	</head>
 	<body>
 		<jsp:include page="/common/header.jsp"></jsp:include>
 		<br><br><br>
-		<h1>Logged in</h1>
+		
+		<div class="container">
+			
+		</div>
 	</body>
 </html>

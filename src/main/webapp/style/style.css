@@ -1,0 +1,11 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-image : url("res/bg.jpg")
+}
+
+.button {
+	background-color: #c0c0c0;
+	-webkit-border-radius: 25px;
+	-moz-border-radius : 25px;
+}
