@@ -2,6 +2,7 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts  Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<constant name="struts.devMode" value="true" />
+   	
    	<package name="login" extends="struts-default">
       <action name="login" class="com.app.actions.LoginAction" method="login">
             <result name="success">user/home.jsp</result>
@@ -14,6 +15,9 @@
    </package>
    
    <package name="user" extends="struts-default">
-   
+   	<action name="profile" class="com.app.actions.ProfileAction" method="viewProfile">
+   		<result name="success">user/profile.jsp</result>
+   		<result name="login">login.jsp</result>
+   	</action>
    </package>
 </struts>

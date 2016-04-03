@@ -5,7 +5,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Look A Cook | Signup | Login</title>
-
 		<jsp:include page="common/res.html" />
 	</head>
 	<body>
@@ -62,7 +61,9 @@
 				</fieldset>
 			</s:form>
 		</div>
-		
+	</div>
+	<div class="footer">
+		<a href="#">Contact Us</a>
 	</div>
 </body>
 </html>

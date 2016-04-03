@@ -1,7 +1,8 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	background-image : url("res/bg.jpg")
+	background-image : url("res/bg.jpg");
+	/*background : linear-gradient(#e9eaed,#e9eadd);*/
 }
 
 .button {
