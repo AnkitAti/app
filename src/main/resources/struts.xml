@@ -18,6 +18,7 @@
    	<action name="profile" class="com.app.actions.ProfileAction" method="viewProfile">
    		<result name="success">user/profile.jsp</result>
    		<result name="login">login.jsp</result>
+   		<result name="exception">common/exception.htm</result>
    	</action>
    </package>
 </struts>

@@ -57,11 +57,12 @@ public class LoginAction {
 		
 		if(!verifyCredentials) {
 			Map<String,Object> request = (Map<String,Object>)ActionContext.getContext().get("request");
-			request.put("error", "Username or Password doesn't match. Please try again.");
+			request.put(ApplicationConstants.ERROR_MESSAGE_KEY, "Username or Password doesn't match. Please try again.");
 			return ApplicationConstants.FAILURE_FORWARD;
 		}		
 		
-		session.put(ApplicationConstants.LOGGED_IN_KEY, "true");
+		session.put(ApplicationConstants.LOGGED_IN_KEY, ApplicationConstants.LOGGED_IN_VALUE);
+		session.put(ApplicationConstants.USERNAME_KEY,username);
 		
 		return ApplicationConstants.SUCCESS_FORWARD;
 	}
