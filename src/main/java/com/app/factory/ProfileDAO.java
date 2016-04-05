@@ -8,8 +8,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.app.exception.ApplicationException;
-import com.app.factory.beans.User;
+import com.app.error.ApplicationError;
+import com.app.error.ApplicationException;
 import com.app.factory.beans.UserDescription;
 
 /**
@@ -22,6 +22,7 @@ public class ProfileDAO {
 
 	private static final Logger logger = LogManager.getLogger(ProfileDAO.class);
 	private String username;
+	private ApplicationError[] error = ApplicationError.values();
 	
 	public ProfileDAO(String username) {
 		this.username = username;
@@ -40,7 +41,7 @@ public class ProfileDAO {
 			throw new ApplicationException("Connection not initiated.");
 		}
 		Transaction transaction = null;
-		String hql =  "Select UserDescription as d FROM d join d.user as user "
+		String hql =  "Select profile FROM UserDescription as profile join profile.user as user "
 				+ "Where user.username = :username";
 		
 		try {
@@ -50,7 +51,7 @@ public class ProfileDAO {
 			
 			//System.out.println(list.size());
 			if(list.size()>1) {
-				throw new ApplicationException("More than one users found in constructor of ProfileDAO.");
+				throw new ApplicationException();
 			} else if(list.size()<=0) {
 				throw new ApplicationException("No users found with the provided details");
 			}

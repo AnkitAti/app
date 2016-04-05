@@ -3,7 +3,7 @@ package com.app.service;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.app.exception.ApplicationException;
+import com.app.error.ApplicationException;
 import com.app.factory.ProfileDAO;
 import com.app.factory.beans.UserDescription;
 

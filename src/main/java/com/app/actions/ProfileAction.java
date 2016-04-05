@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.app.constants.ApplicationConstants;
-import com.app.exception.ApplicationException;
+import com.app.error.ApplicationException;
 import com.app.factory.beans.UserDescription;
 import com.app.service.ProfileService;
 import com.opensymphony.xwork2.ActionContext;
@@ -43,12 +43,12 @@ public class ProfileAction {
 			logger.info("User not logged in. Redirecting to login page.");
 			return ApplicationConstants.LOGIN_FORWARD;
 		}
-		/*try {
+		try {
 			ProfileService service = new ProfileService((String)session.get(ApplicationConstants.USERNAME_KEY));
 			this.profile = service.fetchProfileDetails();
 		} catch(ApplicationException ex) {
 			return ApplicationConstants.EXCEPTION_FORWARD;
-		}*/
+		}
 		
 		return ApplicationConstants.SUCCESS_FORWARD;
 	}

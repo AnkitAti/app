@@ -9,7 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.app.exception.ApplicationException;
+import com.app.error.ApplicationException;
 import com.app.factory.beans.User;
 
 public class LoginDAO {

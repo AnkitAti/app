@@ -1,4 +1,4 @@
-package com.app.exception;
+package com.app.error;
 
 /**
  * This exception is thrown in case of any error in application
