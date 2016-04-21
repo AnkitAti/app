@@ -5,11 +5,13 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.app.factory.beans.User;
 
 @Service
+@Repository
 public class SignupDAO {
 
 	public static final Logger logger = LogManager.getLogger(SignupDAO.class);

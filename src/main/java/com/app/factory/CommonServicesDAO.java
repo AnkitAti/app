@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.app.factory.beans.User;
@@ -17,6 +18,7 @@ import com.app.factory.beans.User;
  * @version 1.0
  */
 @Service
+@Repository
 public class CommonServicesDAO {
 
 	private static final Logger logger = LogManager.getLogger(CommonServicesDAO.class);
