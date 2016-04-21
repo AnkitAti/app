@@ -25,6 +25,8 @@ public class ProfileService {
 	 * @return UserDescription of the user with the giver username
 	 * @throws ApplicationException
 	 */
+	
+	
 	public UserDescription fetchProfileDetails() throws ApplicationException {
 		logger.trace("Entering "+ProfileService.class + ".fetchProfileDetails method");
 		ProfileDAO db = new ProfileDAO(username);

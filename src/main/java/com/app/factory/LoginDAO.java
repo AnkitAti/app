@@ -7,25 +7,31 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.app.error.ApplicationException;
 import com.app.factory.beans.User;
 
+@Service
+@Repository
 public class LoginDAO {
 
 	private static final Logger logger = LogManager.getLogger(LoginDAO.class);
 	private User user;
 	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
 	@SuppressWarnings("unchecked")
-	public LoginDAO(String input) {
+	public boolean getDetails(String input) {
 		logger.trace("Entering constructor of LoginDAO");
-		Session session = Connection.getInstance().openSession();
+		Session session = sessionFactory.getCurrentSession();
 		String hql = "FROM User user WHERE user.username = :username OR user.email = :email" ;
-		Transaction transaction = null;
+		
 		try {
-			
-			transaction = session.beginTransaction();
 			Query query = session.createQuery(hql).setString("username", input).setString("email", input);
 			ArrayList<User> list = (ArrayList<User>) query.list();
 			
@@ -37,21 +43,16 @@ public class LoginDAO {
 				user = null;
 			else
 				user = list.get(0);
-			transaction.commit();
-			
+			return true;
 		} catch(HibernateException | ApplicationException ex) {
-			if(transaction!=null) 
-				transaction.rollback();
 			logger.debug("Exception in the constructor of LoginDAO. \n" + ex);
 		} catch(Exception ex) {
-			if(transaction!=null) 
-				transaction.rollback();
 			logger.debug("Exception in the constructor of LoginDAO. \n" + ex);
 		}
 		finally {
-			if(session!=null) 
-				session.close();
+			
 		}
+		return false;
 	}
 	
 	

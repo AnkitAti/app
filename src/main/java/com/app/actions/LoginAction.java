@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.app.constants.ApplicationConstants;
 import com.app.service.LoginService;
@@ -14,10 +16,11 @@ import com.opensymphony.xwork2.ActionContext;
  * @author Ankit
  * @version 1.0
  */
-
 public class LoginAction {
-	Logger logger = LogManager.getLogger(LoginAction.class);
+	private static final Logger logger = LogManager.getLogger(LoginAction.class);
 	
+	@Autowired
+	private LoginService loginService;
 	private String username;
 	private String password;
 	
@@ -46,24 +49,32 @@ public class LoginAction {
 	@SuppressWarnings("unchecked")
 	public String login() {
 		logger.trace("Entering execute method");
+		try {
+			Map<String,Object> session = ActionContext.getContext().getSession();
+			if(session.get(ApplicationConstants.LOGGED_IN_KEY)!=null && session.get(ApplicationConstants.LOGGED_IN_KEY).equals("true")) {
+				return ApplicationConstants.SUCCESS_FORWARD;
+			}
 		
-		Map<String,Object> session = ActionContext.getContext().getSession();
-		if(session.get(ApplicationConstants.LOGGED_IN_KEY)!=null && session.get(ApplicationConstants.LOGGED_IN_KEY).equals("true")) {
+			boolean verifyCredentials = loginService.validateLogin(username, password);
+		
+			if(!verifyCredentials) {
+				Map<String,Object> request = (Map<String,Object>)ActionContext.getContext().get("request");
+				request.put(ApplicationConstants.ERROR_MESSAGE_KEY, "Username or Password doesn't match. Please try again.");
+				return ApplicationConstants.FAILURE_FORWARD;
+			}		
+		
+			session.put(ApplicationConstants.LOGGED_IN_KEY, ApplicationConstants.LOGGED_IN_VALUE);
+			session.put(ApplicationConstants.USERNAME_KEY,username);
+		
 			return ApplicationConstants.SUCCESS_FORWARD;
-		}
-		
-		LoginService service = new LoginService();
-		boolean verifyCredentials = service.validateLogin(username, password);
-		
-		if(!verifyCredentials) {
+		} catch(HibernateException ex) {
 			Map<String,Object> request = (Map<String,Object>)ActionContext.getContext().get("request");
-			request.put(ApplicationConstants.ERROR_MESSAGE_KEY, "Username or Password doesn't match. Please try again.");
-			return ApplicationConstants.FAILURE_FORWARD;
-		}		
-		
-		session.put(ApplicationConstants.LOGGED_IN_KEY, ApplicationConstants.LOGGED_IN_VALUE);
-		session.put(ApplicationConstants.USERNAME_KEY,username);
-		
-		return ApplicationConstants.SUCCESS_FORWARD;
+			request.put(ApplicationConstants.ERROR_MESSAGE_KEY,"Shame on us!! Something went wrong. Please try after some time.");
+			return ApplicationConstants.EXCEPTION_FORWARD;
+		} catch(Exception ex) {
+			Map<String,Object> request = (Map<String,Object>)ActionContext.getContext().get("request");
+			request.put(ApplicationConstants.ERROR_MESSAGE_KEY,"Shame on us!! Something went wrong. Please try after some time.");
+			return ApplicationConstants.EXCEPTION_FORWARD;
+		}
 	}
 }

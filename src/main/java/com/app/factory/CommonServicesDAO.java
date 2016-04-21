@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import com.app.factory.beans.User;
 
@@ -16,6 +16,7 @@ import com.app.factory.beans.User;
  * @author Ankit
  * @version 1.0
  */
+@Service
 public class CommonServicesDAO {
 
 	private static final Logger logger = LogManager.getLogger(CommonServicesDAO.class);
@@ -26,14 +27,12 @@ public class CommonServicesDAO {
 	 * @return false if the username exists, true otherwise
 	 */
 	@SuppressWarnings("unchecked")
-	public static boolean usernameExist(String username){
+	public boolean usernameExist(String username){
 		
 		Session session = Connection.getInstance().openSession();
 		String hql = "FROM User as user WHERE user.username = :username";
-		Transaction transaction = null;
 		
 		try {
-			transaction = session.beginTransaction();
 			
 			Query query = session.createQuery(hql);
 			List<User> list = query.setParameter("username", username).list();
@@ -43,23 +42,11 @@ public class CommonServicesDAO {
 			
 			return true;
 		} catch(HibernateException ex) {
-			
-			if(transaction!=null) 
-				transaction.rollback();
-			
 			logger.debug("Exception Caught in SignupDAO.usernameExists.\n" + ex);
 			return true;
 		} catch(Exception ex) {
-			if(transaction!=null) 
-				transaction.rollback();
-			
 			logger.debug("Exception Caught in SignupDAO.usernameExists.\n" + ex);
 			return true;
-		}
-		
-		finally {
-			if(session!=null)
-				session.close();
 		}
 	}
 	
@@ -70,37 +57,25 @@ public class CommonServicesDAO {
 	 * @return false if the email does not exist, true otherwise.
 	 */
 	@SuppressWarnings("unchecked")
-	public static boolean emailExists(String email) {
+	public boolean emailExists(String email) {
 		
 		Session session = Connection.getInstance().openSession();
 		String hql = "FROM User as user WHERE user.email = :email";
-		Transaction transaction = null;
+		
 		try {
-			transaction = session.beginTransaction();
 			
 			Query query = session.createQuery(hql);
 			List<User> list = query.setParameter("email", email).list();
 			
-			transaction.commit();
 			if(list!=null && list.size()==0) 
 				return false;
 			return true;
 		} catch(HibernateException ex) {
-			if(transaction!=null) {
-				transaction.rollback();
-			}
 			logger.debug("Exception caught in SignupDAO.emailExists.\n" + ex);
 			return true;
 		} catch(Exception ex) {
-			if(transaction!=null) {
-				transaction.rollback();
-			}
 			logger.debug("Exception caught in SignupDAO.emailExists.\n" + ex);
 			return true;
-		}
-		finally {
-			if(session!=null)
-				session.close();
 		}
 	}
 }

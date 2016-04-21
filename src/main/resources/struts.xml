@@ -7,10 +7,12 @@
       <action name="login" class="com.app.actions.LoginAction" method="login">
             <result name="success">user/home.jsp</result>
             <result name="failure">login.jsp</result>
+            <result name="exception">login.jsp</result>
       </action>
       <action name="signup" class="com.app.actions.SignupAction" method="signup">
       	<result name="success">user/home.jsp</result>
       	<result name="failure">login.jsp</result>
+      	<result name="exception">login.jsp</result>
       </action>
    </package>
    
