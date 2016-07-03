@@ -12,13 +12,8 @@ import com.app.factory.beans.User;
 import com.app.factory.interfaces.SignupInterface;
 
 @Service
-<<<<<<< HEAD
-@Repository
 
-=======
 public class SignupDAO implements SignupInterface{
->>>>>>> 1d352d4... Changes made for Integrating spring with struts
-
 	public static final Logger logger = LogManager.getLogger(SignupDAO.class);
 	
 	@Autowired
