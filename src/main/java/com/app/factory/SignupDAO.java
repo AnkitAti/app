@@ -12,7 +12,6 @@ import com.app.factory.beans.User;
 import com.app.factory.interfaces.SignupInterface;
 
 @Service
-
 public class SignupDAO implements SignupInterface{
 	public static final Logger logger = LogManager.getLogger(SignupDAO.class);
 	
