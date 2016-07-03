@@ -14,19 +14,19 @@
 			<s:form action="login" class="form-inline">
 				<fieldset>
 					<div class="form-group">
-						<s:textfield name="username" class="form-control input-sm" requiredLabel="Required"/>
+						<s:textfield name="username" class="form-control input-sm" requiredLabel="true"  id="" />
 					</div>
 					<div class="form-group">
-						<s:password name="password" class="form-control input-sm" />
+						<s:password name="password" class="form-control input-sm" requiredLabel="true" id="" />
 					</div>
-					<input type="submit" class="btn btn-default button" onclick="" value="Login" />
+					<input type="submit" class="btn btn-default button" onclick="" value="Login"/>
 				</fieldset>
 			</s:form>
 			</div>
 			<div class="col-md-offset-7">
-				<s:if test="#request.error!=null">
-					<span style="color:red;"><s:property value="#request.error" /></span>
-					<s:set scope="request" var="error" value=""></s:set>
+				<s:if test="#request.errorLogin!=null">
+					<span style="color:red;"><s:property value="#request.errorLogin" /></span>
+					<s:set scope="request" var="errorLogin" value=""></s:set>
 				</s:if>
 			</div>
 	</div>
@@ -49,21 +49,26 @@
 					<br>
 					<div class="form-group-lg">
 						<label for="email">Email ID</label>
-						<s:textfield name="user.email" class="form-control input-lg" />
+						<s:textfield name="user.email" class="form-control input-lg" id="" />
 					</div>
 					<br>
 					<div class="form-group-lg">
 						<label for="password">Password</label>
-						<s:password name="user.password" class="form-control input-lg" />
+						<s:password name="user.password" class="form-control input-lg" id="" />
 					</div>
 					<br> <input type="submit" class="btn btn-lg button" onclick=""
 						value="Sign Up" />
 				</fieldset>
 			</s:form>
+				
+			<s:if test="#request.errorSignup!=null">
+				<span style="color:red"><s:property value="#request.errorSignup" /></span>
+				<s:set scope="request" var="errorSignup" value=""></s:set>
+			</s:if>
 		</div>
 	</div>
-	<div class="footer">
-		<a href="#">Contact Us</a>
-	</div>
+	<footer class="footer">
+		
+	</footer>
 </body>
 </html>

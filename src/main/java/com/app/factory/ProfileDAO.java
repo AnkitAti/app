@@ -8,7 +8,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.app.error.ApplicationError;
 import com.app.error.ApplicationException;
 import com.app.factory.beans.UserDescription;
 
@@ -22,7 +21,6 @@ public class ProfileDAO {
 
 	private static final Logger logger = LogManager.getLogger(ProfileDAO.class);
 	private String username;
-	private ApplicationError[] error = ApplicationError.values();
 	
 	public ProfileDAO(String username) {
 		this.username = username;
@@ -55,8 +53,8 @@ public class ProfileDAO {
 			} else if(list.size()<=0) {
 				throw new ApplicationException("No users found with the provided details");
 			}
-			System.out.println(list.get(0) instanceof UserDescription);
-			return (UserDescription)list.get(0);
+			//System.out.println(list.get(0) instanceof UserDescription);
+			return list.get(0);
 		} catch(HibernateException ex) {
 			System.out.println(ex);
 			logger.debug("Exception caught in Constructor of ProfileDAO. " + ex);

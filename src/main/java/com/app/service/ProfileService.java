@@ -31,7 +31,7 @@ public class ProfileService {
 		logger.trace("Entering "+ProfileService.class + ".fetchProfileDetails method");
 		ProfileDAO db = new ProfileDAO(username);
 		UserDescription user = db.getUserDetails();
-		System.out.println(user);
+		//System.out.println(user);
 		user.setId(-1); //This user will be set in session or request. To remove the unnecessary information from the object.
 		return user;
 	}

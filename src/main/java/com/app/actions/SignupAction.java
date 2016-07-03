@@ -29,14 +29,14 @@ public class SignupAction {
 		if(signupService.usernameExists(user.getUsername())) {
 			
 			Map<String,Object> request = (Map<String,Object>)ActionContext.getContext().get("request");
-			request.put(ApplicationConstants.ERROR_MESSAGE_KEY, "Username already exists. Please try signing up with some other username.");
+			request.put(ApplicationConstants.ERROR_MESSAGE_KEY_SIGNUP, "Username already exists. Please try signing up with some other username.");
 			
 			return ApplicationConstants.FAILURE_FORWARD;
 		
 		} else if(signupService.emailExists(user.getEmail())) {
 			
 			Map<String,Object> request = (Map<String,Object>)ActionContext.getContext().get("request");
-			request.put(ApplicationConstants.ERROR_MESSAGE_KEY,"Email ID already exists. Please try signing up with some other Email ID.");
+			request.put(ApplicationConstants.ERROR_MESSAGE_KEY_SIGNUP,"Email ID already exists. Please try signing up with some other Email ID.");
 			
 			return ApplicationConstants.FAILURE_FORWARD;
 		

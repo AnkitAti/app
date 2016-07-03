@@ -6,7 +6,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 /**
- * Create instances of Session Factory to be used for executing query
+ * Create instances of Session Factory to be used for executing query,
+ * <b>This class is not used anywhere. This class is replaced by Spring datasource and DI.</b>
  * @author Ankit
  * @version 1.0
  */

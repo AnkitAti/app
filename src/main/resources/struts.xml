@@ -3,23 +3,35 @@
 <struts>
 	<constant name="struts.devMode" value="true" />
    	
+   	<!-- Login and signup package -->
    	<package name="login" extends="struts-default">
+      
       <action name="login" class="com.app.actions.LoginAction" method="login">
             <result name="success">user/home.jsp</result>
             <result name="failure">login.jsp</result>
             <result name="exception">login.jsp</result>
       </action>
+      
       <action name="signup" class="com.app.actions.SignupAction" method="signup">
       	<result name="success">user/home.jsp</result>
       	<result name="failure">login.jsp</result>
       	<result name="exception">login.jsp</result>
       </action>
+   
    </package>
    
+   <!-- User related package -->
    <package name="user" extends="struts-default">
+   	
    	<action name="profile" class="com.app.actions.ProfileAction" method="viewProfile">
    		<result name="success">user/profile.jsp</result>
    		<result name="login">login.jsp</result>
+   		<result name="exception">common/exception.htm</result>
+   	</action>
+   	
+   	<action name="search" class="com.app.actions.SearchAction" method="search">
+   		<result name="success"></result>
+   		<result name="login"></result>
    		<result name="exception">common/exception.htm</result>
    	</action>
    </package>

@@ -5,24 +5,25 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.stereotype.Service;
 
 import com.app.factory.beans.User;
+import com.app.factory.interfaces.SignupInterface;
 
 @Service
+<<<<<<< HEAD
 @Repository
-public class SignupDAO {
+
+=======
+public class SignupDAO implements SignupInterface{
+>>>>>>> 1d352d4... Changes made for Integrating spring with struts
 
 	public static final Logger logger = LogManager.getLogger(SignupDAO.class);
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	/**
-	 * Insert the USER data into the USERS database.
-	 * @param user
-	 * @return true if insert was successfull else false.
-	 */
+	
 	public boolean signupQuery(User user) {
 		logger.trace("Entering SignupDAO.signupQuery");
 		
@@ -33,7 +34,7 @@ public class SignupDAO {
 		} 
 		
 		catch (Exception ex) {
-			logger.debug("Exception Caught in SignupDAO.signupQuery whie saving the object in db." + ex);
+			logger.debug("Exception Caught in SignupDAO.signupQuery while saving the object in db." + ex);
 			return false;
 		} 
 		

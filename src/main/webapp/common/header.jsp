@@ -7,21 +7,14 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Cook Look</a>
+			<a class="navbar-brand" href="login">Cook Look</a>
 		</div>
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Search a Cook</a></li>
 				<li><a href="#">Be a Cook</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="profile">My Profile</a></li>
-						<li><a href="feedback.jsp">Feedback</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="common/logout.jsp">Logout</a></li>
-					</ul>
-				</li>
+				<li><a href="profile">Profile</a></li>
+				<li><a href="common/logout.jsp">Logout</a></li>
 			</ul>
 		</div>
 	</div>

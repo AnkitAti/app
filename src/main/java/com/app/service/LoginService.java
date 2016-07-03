@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.factory.LoginDAO;
 import com.app.factory.beans.UserDescription;
+import com.app.factory.interfaces.LoginInterface;
 import com.app.security.HashService;
 
 /**
@@ -24,7 +24,7 @@ public class LoginService {
 	private static final Logger logger = LogManager.getLogger(LoginService.class);
 	
 	@Autowired
-	private LoginDAO loginDB;
+	private LoginInterface loginDB;
 	/**
 	 * This method validates the login for the entered username and password
 	 * @param username
@@ -35,25 +35,49 @@ public class LoginService {
 	public boolean validateLogin(String username, String password) {
 		logger.trace("Entring LoginService.validateLogin");
 		try {
-			loginDB.getDetails(username);
+			loginDB.extractDetails(username);
+			
+			
 			String salt = loginDB.getSalt();
+			
 			if(salt==null) {
 				logger.info("Username " + username + " does not exists.");
 				return false;
 			}
 			
 			String hashPassword = HashService.sha256Hash(password + salt);
+			
 			boolean success = loginDB.login(hashPassword);
+			
 			return success;
 		} catch(HibernateException | NullPointerException | NoSuchAlgorithmException ex) {
-			logger.debug("Exception caught in LoginService.validateLogin.\n" + ex);
+			logger.debug("Exception caught in LoginService.validateLogin." , ex);
 		}
 		return false;
 	}
 	
+	/**
+	 * To get the username of the logged in user
+	 * @return Username
+	 */
+	public String getUserName() {
+		return loginDB.getUserName();
+	}
 	
+	/**
+	 * To get the details of the logged in user
+	 * @param username
+	 * @return UserDescription
+	 */
 	public UserDescription getUserDetails(String username) {
 		return null;
 	}
 	
+	/**
+	 * To check if the username exist in the database or not after unsuccessful login
+	 */
+	
+	public boolean usernameExist() {
+		return loginDB.getUsernameExist();
+	}
 }
