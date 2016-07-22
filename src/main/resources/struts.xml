@@ -8,14 +8,14 @@
       
       <action name="login" class="com.app.actions.LoginAction" method="login">
             <result name="success">user/home.jsp</result>
-            <result name="failure">login.jsp</result>
-            <result name="exception">login.jsp</result>
+            <result name="failure">index.jsp</result>
+            <result name="exception">index.jsp</result>
       </action>
       
       <action name="signup" class="com.app.actions.SignupAction" method="signup">
       	<result name="success">user/home.jsp</result>
-      	<result name="failure">login.jsp</result>
-      	<result name="exception">login.jsp</result>
+      	<result name="failure">index.jsp</result>
+      	<result name="exception">index.jsp</result>
       </action>
    
    </package>
@@ -25,7 +25,7 @@
    	
    	<action name="profile" class="com.app.actions.ProfileAction" method="viewProfile">
    		<result name="success">user/profile.jsp</result>
-   		<result name="login">login.jsp</result>
+   		<result name="login">index.jsp</result>
    		<result name="exception">common/exception.htm</result>
    	</action>
    	

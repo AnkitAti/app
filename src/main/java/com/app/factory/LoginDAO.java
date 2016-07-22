@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.app.error.ApplicationError;
 import com.app.error.ApplicationException;
 import com.app.factory.beans.User;
 import com.app.factory.interfaces.LoginInterface;
@@ -39,16 +40,17 @@ public class LoginDAO implements LoginInterface {
 			
 			if(list.size() > 1) {
 				usernameExist = false;
-				throw new ApplicationException();
+				throw new ApplicationException(ApplicationError.Error201);
 			} 
 			
 			if(list.size()==0) {
 				user = null;
 				usernameExist = false;
 			}
-			else
+			else {
 				user = list.get(0);
-			usernameExist = true;
+				usernameExist = true;
+			}
 			return true;
 		} catch(HibernateException | ApplicationException ex) {
 			logger.debug("Exception in LoginDAO.getDetails." , ex);

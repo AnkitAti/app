@@ -33,12 +33,16 @@ public class SignupService {
 			
 			password = HashService.sha256Hash(password+salt);
 			user.setPassword(password);
-			
 			user.setSalt(salt);
 			
+			System.out.println(user.getPassword().length());
+			System.out.println(user.getSalt().length());
+			
+			
+			boolean signupSuccessful = signupDB.signupQuery(user);
 			logger.trace("Exiting SignupService.signup");
 			
-			return signupDB.signupQuery(user);
+			return signupSuccessful;
 		} catch (NoSuchAlgorithmException e) {
 			logger.debug("Exception Caught : " + e);
 			return false;

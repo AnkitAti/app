@@ -70,7 +70,7 @@ public class LoginAction {
 				} else {
 					message = "Invalid username. Please enter a valid username.";
 				}
-				request.put(ApplicationConstants.ERROR_MESSAGE_KEY, message);
+				request.put(ApplicationConstants.ERROR_MESSAGE_KEY_LOGIN, message);
 				return ApplicationConstants.FAILURE_FORWARD;
 			}		
 		

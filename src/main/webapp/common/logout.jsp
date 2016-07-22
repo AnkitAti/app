@@ -10,7 +10,7 @@
 		<%
 			session = request.getSession(false);
 			session.invalidate();
-			response.sendRedirect("../index.htm");
+			response.sendRedirect("../index.jsp");
 		%>
 	</body>
 </html>

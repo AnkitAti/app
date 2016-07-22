@@ -6,23 +6,30 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.app.error.ApplicationException;
 import com.app.factory.beans.UserDescription;
+import com.app.factory.interfaces.ProfileInterface;
 
 /**
  * This class provides the database related functionalities for profile viewing and editing.
  * @author Ankit
  * @version 1.0
  */
-
-public class ProfileDAO {
+@Repository
+@Service
+public class ProfileDAO implements ProfileInterface {
 
 	private static final Logger logger = LogManager.getLogger(ProfileDAO.class);
 	private String username;
+	@Autowired
+	private SessionFactory sessionFactory;
 	
-	public ProfileDAO(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 	
@@ -34,43 +41,33 @@ public class ProfileDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	public UserDescription getUserDetails() throws ApplicationException {
-		Session session = Connection.getInstance().openSession();
+		Session session = sessionFactory.getCurrentSession();
 		if(session == null) {
 			throw new ApplicationException("Connection not initiated.");
 		}
-		Transaction transaction = null;
 		String hql =  "Select profile FROM UserDescription as profile join profile.user as user "
 				+ "Where user.username = :username";
 		
 		try {
-			transaction = session.beginTransaction();
 			List<UserDescription> list = session.createQuery(hql).setParameter("username", this.username).list();
-			transaction.commit();
-			
-			//System.out.println(list.size());
+		
 			if(list.size()>1) {
 				throw new ApplicationException();
 			} else if(list.size()<=0) {
 				throw new ApplicationException("No users found with the provided details");
 			}
-			//System.out.println(list.get(0) instanceof UserDescription);
+
 			return list.get(0);
 		} catch(HibernateException ex) {
 			System.out.println(ex);
 			logger.debug("Exception caught in Constructor of ProfileDAO. " + ex);
-			if(transaction!=null) {
-				transaction.rollback();
-			}
 			return null;
 		} catch(Exception ex) {
 			ex.printStackTrace();
 			logger.debug("Exception Caught in constructor of ProfileDAO. " + ex);
-			if(transaction!=null) {
-				transaction.rollback();
-			}
 			return null;
 		} finally {
-			session.close();
+			
 		}
 	}
 	

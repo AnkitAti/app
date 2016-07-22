@@ -15,5 +15,7 @@
 		<div class="container">
 			
 		</div>
+		
+		<jsp:include page="/common/footer.html" />
 	</body>
 </html>

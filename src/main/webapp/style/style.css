@@ -1,12 +1,29 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	background-image : url("res/bg.jpg");
-	/*background : linear-gradient(#e9eaed,#e9eadd);*/
+	/*background-image : url("res/bg.jpg");*/
+	background : linear-gradient(#bbbabb,#bbbbbb);
 }
 
 .button {
+	margin: 9px;
+	border: 1px black;
+	-webkit-border-radius: 5px;
+	-moz-border-radius : 5px; 
+}
+
+.button-color {
 	background-color: #c0c0c0;
-	-webkit-border-radius: 25px;
-	-moz-border-radius : 25px;
+}
+
+.shadow {
+	box-shadow: 1px 8px 5px 2px #888888;
+}
+
+.app-footer {
+	box-shadow: 8px 10px 10px 15px #888888;
+}
+
+.top-padding {
+	padding-top: 30px;
 }

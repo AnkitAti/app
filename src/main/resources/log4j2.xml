@@ -18,22 +18,27 @@
     
     <Root level="debug">
     	<AppenderRef ref = "A2" />
+    	<AppenderRef ref="STDOUT"></AppenderRef>
     </Root>
     
     <Root level="error">
     	<AppenderRef ref = "A2" />
+    	<AppenderRef ref="STDOUT"></AppenderRef>
     </Root>
     
     <Root level="INFO">
     	<AppenderRef ref = "A2" />
+    	<AppenderRef ref="STDOUT"></AppenderRef>
     </Root>
     
     <Root level="TRACE">
     	<AppenderRef ref = "A2" />
+    	<AppenderRef ref="STDOUT"></AppenderRef>
     </Root>
     
     <Root level="trace">
     	<AppenderRef ref = "A2" />
+    	<AppenderRef ref="STDOUT"></AppenderRef>
     </Root>
   </Loggers>
 </Configuration>

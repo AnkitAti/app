@@ -8,7 +8,9 @@ package com.app.error;
  */
 public enum ApplicationError {
 	
-	Error201("More than one instance found with the given credentials. Please verify it in database.");
+	Error201("More than one instance found with the given credentials. Please verify it in database"),
+	Error202("Username not found");
+	
 	
 	private String errorMessage;
 	

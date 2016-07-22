@@ -27,5 +27,6 @@
 			</s:else>
 			</div>
 		</div>
+		<jsp:include page="/common/footer.html" />
 	</body>
 </html>
