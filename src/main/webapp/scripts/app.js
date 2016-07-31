@@ -6,16 +6,31 @@ $(document).ready(function () {
 	$("#loginModal").on("shown.bs.modal", function () {
 		$("#login-username").focus();
 	});
-	$("signupModal").on("shown.bs.modal", function() {
+	$("#signupModal").on("shown.bs.modal", function() {
 		$("#signup-username").focus();
 	});
 	
-	if($("#login-error").children().length>0) {
+	if($("#login-error").length == 1) {
 		$("#loginModal").modal('show');
-	} else if($("#signup-error").children().length>0) {
+	} else if($("#signup-error").length == 1) {
 		$("#signupModal").modal('show');
 	}
+		
+	$('#loginModal').on('hidden.bs.modal', function () {
+		$('#login-username').val("");
+		$('#login-username').parent().removeClass("has-error");
+		$('#login-password').val("");
+		$('#login-password').parent().removeClass("has-error");
+	});
 	
+	$('#signupModal').on('hidden.bs.modal', function () {
+		$('#signup-username').val("");
+		$('#signup-username').parent().removeClass("has-error");
+		$('#signup-email').val("");
+		$('#signup-email').parent().removeClass("has-error");
+		$('#signup-password').val("");
+		$('#signup-password').parent().removeClass("has-error");
+	});
 });
 
 function checkLogin() {
@@ -23,12 +38,12 @@ function checkLogin() {
 	var password = $('#login-password').val();
 	
 	if(username==null || username=="") {
-		$("#login-username").addClass("hasError");
+		$("#login-username").parent().addClass("has-error");
 		return false;
 	}
 	
 	if(password==null || password=="") {
-		$('#login-password').addClass("hasError");
+		$('#login-password').parent().addClass("has-error");
 		return false;
 	}
 	
@@ -40,7 +55,19 @@ function checkSignup() {
 	var email = $('#signup-email').val();
 	var password = $('#signup-password').val();
 	
-	console.log(username + " " + email + " " + password);
+	if(username==null || username=="") {
+		$('#signup-username').parent().addClass("has-error");
+		return false;
+	}
 	
-	return false;
+	if(email==null || email=="") {
+		$("#signup-email").parent().addClass("has-error");
+		return false;
+	}
+	
+	if(password==null || password=="") {
+		$("#signup-password").parent().addClass("has-error");
+		return false;
+	}
+	return true;
 }

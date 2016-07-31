@@ -8,7 +8,9 @@ import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.app.constants.ApplicationConstants;
+import com.app.constants.PropertiesConstants;
 import com.app.service.LoginService;
+import com.app.util.AppConfig;
 import com.opensymphony.xwork2.ActionContext;
 
 /**
@@ -55,20 +57,19 @@ public class LoginAction {
 		boolean verifyCredentials = false;
 		
 		try {
-			
 			session = ActionContext.getContext().getSession();
-			if(session.get(ApplicationConstants.LOGGED_IN_KEY)!=null && session.get(ApplicationConstants.LOGGED_IN_KEY).equals("true")) {
+			if(session.get(ApplicationConstants.LOGGED_IN_KEY)!=null && session.get(ApplicationConstants.LOGGED_IN_KEY).equals(ApplicationConstants.LOGGED_IN_VALUE)) {
 				return ApplicationConstants.SUCCESS_FORWARD;
 			}
-		
+			
 			verifyCredentials = loginService.validateLogin(username, password);
 		
 			if(!verifyCredentials) {
 				request = (Map<String,Object>)ActionContext.getContext().get("request");
 				if(loginService.usernameExist()) {
-					message = "Wrong Password. Please enter the valid password.";
+					message = AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_PWD);
 				} else {
-					message = "Invalid username. Please enter a valid username.";
+					message = AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_USERNAME);
 				}
 				request.put(ApplicationConstants.ERROR_MESSAGE_KEY_LOGIN, message);
 				return ApplicationConstants.FAILURE_FORWARD;
@@ -80,11 +81,11 @@ public class LoginAction {
 			return ApplicationConstants.SUCCESS_FORWARD;
 		} catch(HibernateException ex) {
 			request = (Map<String,Object>)ActionContext.getContext().get("request");
-			request.put(ApplicationConstants.ERROR_MESSAGE_KEY,"Shame on us!! Something went wrong. Please try after some time.");
+			request.put(ApplicationConstants.ERROR_MESSAGE_KEY,AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_INTERNAL));
 			return ApplicationConstants.EXCEPTION_FORWARD;
 		} catch(Exception ex) {
 			request = (Map<String,Object>)ActionContext.getContext().get("request");
-			request.put(ApplicationConstants.ERROR_MESSAGE_KEY,"Shame on us!! Something went wrong. Please try after some time.");
+			request.put(ApplicationConstants.ERROR_MESSAGE_KEY,AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_INTERNAL));
 			return ApplicationConstants.EXCEPTION_FORWARD;
 		}
 	}

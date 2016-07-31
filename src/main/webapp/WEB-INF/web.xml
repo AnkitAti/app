@@ -19,6 +19,10 @@
  	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<listener>
+		<listener-class>com.app.util.AppConfig</listener-class>
+	</listener>
    	<filter-mapping>
       	<filter-name>struts2</filter-name>
       	<url-pattern>/*</url-pattern>

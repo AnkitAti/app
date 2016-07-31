@@ -30,17 +30,21 @@
 								</div>
 							<br>	
 								<input type="submit" class="btn btn-info btn-lg button" value="Login"/>
-								<div class="text-danger" id="login-error">
-									<s:if test="#request.errorLogin!=null">
-										<span style="color:red;"><s:property value="#request.errorLogin" /></span>
-										<s:set scope="request" var="errorLogin" value=""></s:set>
-									</s:if>
 								
-									<s:if test="#request.error!=null">
+								<s:if test="#request.errorLogin!=null">
+									<div class="text-danger" id="login-error">
+										<s:property value="#request.errorLogin" />
+									</div>
+									<s:set scope="request" var="errorLogin" value=""></s:set>
+								</s:if>
+								
+								<s:if test="#request.error!=null">
+									<div class="text-danger" id="login-error">
 										<s:property value="#request.error" />
-										<s:set scope="request" var="error" value=""></s:set>
-									</s:if>
-								</div>
+									</div>
+									<s:set scope="request" var="error" value=""></s:set>
+								</s:if>
+								
 							</fieldset>
 						</s:form>
         			</div>
@@ -78,12 +82,12 @@
 								 <input type="submit" class="btn btn-info btn-lg button" value="Sign Up" />
 							</fieldset>
 						</s:form>
-						<div class="text-danger" id="signup-error">
-							<s:if test="#request.errorSignup!=null">
-								<span style="color: red"><s:property value="#request.errorSignup" /></span>
-								<s:set scope="request" var="errorSignup" value=""></s:set>
-							</s:if>
-						</div>
+						<s:if test="#request.errorSignup!=null">
+							<div class="text-danger" id="signup-error">
+								<s:property value="#request.errorSignup" />
+							</div>
+							<s:set scope="request" var="errorSignup" value=""></s:set>
+						</s:if>
 					</div>
 					<div class="modal-footer">
           				<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
@@ -95,7 +99,10 @@
 		<div class="container">
 			<div class="page-header top-padding">
 				<h1>Search for a cook! <small>Don't be hungry</small></h1>
-				
+			</div>
+			
+			<div class="">
+			
 			</div>
 		</div>
 		<jsp:include page="common/footer.html"></jsp:include>

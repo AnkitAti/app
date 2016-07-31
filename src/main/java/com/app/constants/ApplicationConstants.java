@@ -1,5 +1,10 @@
 package com.app.constants;
 
+/**
+ * Different String constants used throught out the application
+ * @author Ankit
+ *
+ */
 public class ApplicationConstants {
 	
 	//****************List of forward strings to be used in action classes***********************//
