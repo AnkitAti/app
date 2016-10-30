@@ -7,11 +7,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="USERS")
+@NamedQueries ({
+		@NamedQuery(
+				name	= "getUserWithUsername",
+				query	= "FROM User u WHERE u.username = :username"
+		),
+		@NamedQuery(
+				name	= "getUserWithUsernameOrEmail",
+				query	= " FROM User u WHERE u.username = :username OR u.email = :email"
+		)
+})
 public class User implements Serializable {
 	static final long serialVersionUID = 5397063106608308168L;
 	

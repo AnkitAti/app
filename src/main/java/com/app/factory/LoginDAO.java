@@ -2,6 +2,7 @@ package com.app.factory;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -74,7 +75,7 @@ public class LoginDAO implements LoginInterface {
 			return isLoginSuccessful;
 		
 		//password matches 
-		if(password.equals(this.user.getPassword()))
+		if(password!=null && StringUtils.isNotBlank(password) && password.equals(this.user.getPassword()))
 			isLoginSuccessful = true;
 		
 		logger.trace("Exiting LoginDAO.login");
