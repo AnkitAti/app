@@ -3,33 +3,33 @@
  */
 
 $(document).ready(function () {
-	$("#loginModal").on("shown.bs.modal", function () {
-		$("#login-username").focus();
+	$('#login-id').click(function() {
+		$('.links').each(function() {
+			$(this).removeClass('selected');
+		});
+		$(this).parent().addClass('selected');
+		$('.register').animate({
+			opacity : 0,
+		}, 1000);
+		$('.login').animate({
+			opacity : 1
+		}, 1000);
+		$('.register').addClass('hide');
+		$('.login').removeClass('hide');
 	});
-	$("#signupModal").on("shown.bs.modal", function() {
-		$("#signup-username").focus();
-	});
-	
-	if($("#login-error").length == 1) {
-		$("#loginModal").modal('show');
-	} else if($("#signup-error").length == 1) {
-		$("#signupModal").modal('show');
-	}
-		
-	$('#loginModal').on('hidden.bs.modal', function () {
-		$('#login-username').val("");
-		$('#login-username').parent().removeClass("has-error");
-		$('#login-password').val("");
-		$('#login-password').parent().removeClass("has-error");
-	});
-	
-	$('#signupModal').on('hidden.bs.modal', function () {
-		$('#signup-username').val("");
-		$('#signup-username').parent().removeClass("has-error");
-		$('#signup-email').val("");
-		$('#signup-email').parent().removeClass("has-error");
-		$('#signup-password').val("");
-		$('#signup-password').parent().removeClass("has-error");
+	$('#register-id').click(function() {
+		$('.links').each(function() {
+			$(this).removeClass('selected');
+		});
+		$(this).parent().addClass('selected');
+		$('.login').animate({
+			opacity : 0,
+		}, 1000);
+		$('.register').animate({
+			opacity : 1,
+		}, 1000);
+		$('.register').removeClass('hide');
+		$('.login').addClass('hide');
 	});
 });
 

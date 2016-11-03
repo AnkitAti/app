@@ -1,29 +1,125 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	/*background-image : url("res/bg.jpg");*/
-	background : linear-gradient(#eeedee,#eeeeee);
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Open Sans Condensed", sans-serif;
+  margin: 0;
+  height: 1000px;
 }
 
-.button {
-	margin: 9px;
-	border: 1px black;
-	-webkit-border-radius: 5px;
-	-moz-border-radius : 5px; 
+.main-container {
+  padding: 0;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.button-color {
-	background-color: #c0c0c0;
+.left-pane {
+  display: inline-block;
+  width: 70%;
+  background: #eee;
+  height: 1000px;
+  text-align: center;
+}
+@media screen and (max-width: 770px) {
+  .left-pane {
+    width: 0;
+    display: none;
+  }
 }
 
-.shadow {
-	box-shadow: 1px 8px 5px 2px #888888;
+.right-pane {
+  display: inline-block;
+  width: 29.6%;
+  height: 700px;
+  position: fixed;
+  overflow: hidden;
+}
+@media screen and (max-width: 770px) {
+  .right-pane {
+    width: 100%;
+  }
 }
 
-.app-footer {
-	box-shadow: 8px 10px 10px 15px #888888;
+.list {
+  display: block;
+  text-align: center;
+}
+.list hr {
+  width: 70%;
+  border-top: 1px solid orangered;
+}
+.list .selected {
+  border-bottom-color: orangered;
+}
+.list .selected a {
+  color: #111;
+}
+.list .hide {
+  display: none;
+}
+.list ul {
+  padding: 0;
+}
+.list ul li {
+  border: 2px solid transparent;
+  margin: 10px;
+  padding: 5px;
+  display: inline-block;
+  font-size: 1.3em;
+}
+.list ul li a {
+  width: 100px;
+  text-decoration: none;
+  color: #aaa;
+}
+.list ul li a:hover {
+  color: #111;
 }
 
-.top-padding {
-	padding-top: 30px;
+.form-design {
+  display: block;
 }
+.form-design input[type=password], .form-design input[type=text], .form-design input[type=email] {
+  font-size: 1.3em;
+  height: 40px;
+  width: 80%;
+  margin: 20px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  -webkit-appearance: none;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  transition: all 300ms ease-in;
+}
+.form-design input[type=password]:focus, .form-design input[type=text]:focus, .form-design input[type=email]:focus {
+  outline: none;
+  box-shadow: 0 3px 3px 1px rgba(100, 100, 100, 0.8);
+}
+.form-design input[type=submit] {
+  margin-top: 20px;
+  border-radius: 6px;
+  background: white;
+  font-weight: 200;
+  font-size: 1.2em;
+  width: 50%;
+  height: 45px;
+  border-top: none;
+  border-left: none;
+  border: 1px solid black;
+  transform: scale(1);
+  transition: all 300ms ease-in;
+}
+.form-design input[type=submit]:hover, .form-design input[type=submit]:focus {
+  color: white;
+  background: black;
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(10, 10, 10, 0.5);
+}
+
+.login {
+  opacity: 1;
+}
+
+.register {
+  opacity: 0;
+}
+
+/*# sourceMappingURL=style.css.map */
