@@ -1,4 +1,4 @@
-package com.app.factory;
+package com.app.factory.impl;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.app.error.ApplicationException;
+import com.app.factory.ProfileInterface;
 import com.app.factory.beans.UserDescription;
-import com.app.factory.interfaces.ProfileInterface;
 
 /**
  * This class provides the database related functionalities for profile viewing and editing.

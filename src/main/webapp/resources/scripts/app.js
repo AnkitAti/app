@@ -10,12 +10,19 @@ $(document).ready(function () {
 		$(this).parent().addClass('selected');
 		$('.register').animate({
 			opacity : 0,
-		}, 1000);
-		$('.login').animate({
-			opacity : 1
-		}, 1000);
-		$('.register').addClass('hide');
-		$('.login').removeClass('hide');
+			scale : 0
+		}, {
+			duration : 500,
+			complete : function() {
+				$('.register').addClass('hide');
+				$('.login').removeClass('hide');
+				$('.login').animate({
+					opacity : 1,
+					scale : 1
+				}, 500);
+			}
+		});
+		return false;
 	});
 	$('#register-id').click(function() {
 		$('.links').each(function() {
@@ -24,13 +31,26 @@ $(document).ready(function () {
 		$(this).parent().addClass('selected');
 		$('.login').animate({
 			opacity : 0,
-		}, 1000);
-		$('.register').animate({
-			opacity : 1,
-		}, 1000);
-		$('.register').removeClass('hide');
-		$('.login').addClass('hide');
+			scale : 0
+		}, {
+			duration : 500,
+			complete : function() {
+				$('.login').addClass('hide');
+				$('.register').animate({
+					opacity : 1,
+					scale : 1
+				}, 500);
+				$('.register').removeClass('hide');
+			}
+		});
+		return false;
 	});
+});
+
+$(window).scroll(function() {
+	var scroll = $(this).scrollTop();
+	//$('.app-name').scrollTop(scroll*0.1);
+	//$('.app-name').scrollTop($(this).scrollTop()*0.1);
 });
 
 function checkLogin() {

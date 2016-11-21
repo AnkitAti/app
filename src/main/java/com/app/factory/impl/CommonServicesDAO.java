@@ -1,4 +1,4 @@
-package com.app.factory;
+package com.app.factory.impl;
 
 import java.util.List;
 

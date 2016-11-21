@@ -1,4 +1,4 @@
-package com.app.service;
+package com.app.service.impl;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.factory.CommonServicesDAO;
-import com.app.factory.SignupDAO;
 import com.app.factory.beans.User;
+import com.app.factory.impl.CommonServicesDAO;
+import com.app.factory.impl.SignupDAO;
 import com.app.security.HashService;
 
 @Service

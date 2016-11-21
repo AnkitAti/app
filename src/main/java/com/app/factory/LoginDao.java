@@ -1,4 +1,4 @@
-package com.app.factory.interfaces;
+package com.app.factory;
 
 /**
  * This interface defines the methods of LoginDAO class.
@@ -6,7 +6,7 @@ package com.app.factory.interfaces;
  * @version 1.0
  */
 
-public interface LoginInterface {
+public interface LoginDao{
 	
 	/**
 	 * Initializes the object to be used for further queries related to login.

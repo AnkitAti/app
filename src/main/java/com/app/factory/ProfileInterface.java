@@ -1,4 +1,4 @@
-package com.app.factory.interfaces;
+package com.app.factory;
 
 import com.app.error.ApplicationException;
 import com.app.factory.beans.UserDescription;

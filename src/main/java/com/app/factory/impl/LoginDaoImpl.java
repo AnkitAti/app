@@ -1,4 +1,4 @@
-package com.app.factory;
+package com.app.factory.impl;
 
 import java.util.ArrayList;
 
@@ -15,14 +15,14 @@ import org.springframework.stereotype.Service;
 
 import com.app.error.ApplicationError;
 import com.app.error.ApplicationException;
+import com.app.factory.LoginDao;
 import com.app.factory.beans.User;
-import com.app.factory.interfaces.LoginInterface;
 
 @Service
 @Repository
-public class LoginDAO implements LoginInterface {
+public class LoginDaoImpl implements LoginDao {
 
-	private static final Logger logger = LogManager.getLogger(LoginDAO.class);
+	private static final Logger logger = LogManager.getLogger(LoginDaoImpl.class);
 	private User user;
 	private boolean usernameExist;
 	

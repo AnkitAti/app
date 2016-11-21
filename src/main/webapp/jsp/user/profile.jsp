@@ -10,6 +10,10 @@
 	<body>
 		<jsp:include page="../common/header.jsp"></jsp:include>
 		
+		<div class="main-container">
+			
+		</div>
+		
 		<jsp:include page="../common/footer.jsp" />
 	</body>
 </html>
