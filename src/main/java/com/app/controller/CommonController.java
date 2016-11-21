@@ -50,7 +50,7 @@ public class CommonController {
 		if(CommonHelper.isLoggedIn(request)) {
 			return "user/home";
 		}
-		return "index";
+		return "redirect:index";
 	}
 	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)

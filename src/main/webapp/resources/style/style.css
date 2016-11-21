@@ -1,17 +1,19 @@
 @CHARSET "ISO-8859-1";
 
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Delius+Unicase|Nunito|Ravi+Prakash');
+
 body {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Open Sans Condensed", sans-serif;
+  font-family: 'Nunito', sans-serif;
   margin: 0;
   height: 1000px;
 }
 h1 {
+	font-family: 'Delius Unicase', cursive;
 	font-weight: bold;
 	color: white;
-	font-size: 3.0em;
+	font-size: 350%;
 }
-
-
 .main-container {
   padding: 0;
   width: 100%;
@@ -21,10 +23,13 @@ h1 {
 .left-pane {
   background-image: url(../images/food.jpg);
   background-attachment: fixed;
+  backgroud-size: cover;
+  background-repeat: no-repeat;
   display: inline-block;
   width: 70%;
   height: 1000px;
   text-align: center;
+  position: relative;
 }
 @media screen and (max-width: 770px) {
   .left-pane {
@@ -86,6 +91,7 @@ h1 {
   display: block;
 }
 .form-design input[type=password], .form-design input[type=text], .form-design input[type=email] {
+  font-family: 'Nunito', sans-serif;
   font-size: 1.3em;
   height: 40px;
   width: 80%;
@@ -106,6 +112,7 @@ h1 {
   border: 0.2px solid rgba(10, 10, 10, 0.4);
 }
 .form-design input[type=submit] {
+  font-family: 'Bungee Inline', cursive;
   margin-top: 20px;
   border-radius: 6px;
   background: white;
@@ -122,16 +129,17 @@ h1 {
 .form-design input[type=submit]:hover, .form-design input[type=submit]:focus {
   color: white;
   border: none;
-  background: rgba(0,0,0,0.9);
+  background: rgba(255, 69, 0,0.9);
   box-shadow: 0 5px 5px rgba(10, 10, 10, 0.5);
 }
-
 .login {
   opacity: 1;
 }
-
 .register {
   opacity: 0;
+}
+.error {
+	color: rgba(255, 0, 0, 0.8);
 }
 
 /*# sourceMappingURL=style.css.map */

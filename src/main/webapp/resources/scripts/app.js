@@ -48,9 +48,11 @@ $(document).ready(function () {
 });
 
 $(window).scroll(function() {
-	var scroll = $(this).scrollTop();
-	//$('.app-name').scrollTop(scroll*0.1);
-	//$('.app-name').scrollTop($(this).scrollTop()*0.1);
+	var wScroll = $(this).scrollTop();
+	console.log(wScroll);
+	$('.app-name').css({
+		'transform' : 'translate(0,'+wScroll*0.7+'px)'
+	});
 });
 
 function checkLogin() {

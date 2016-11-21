@@ -28,12 +28,12 @@ public class ProfileController {
 		HttpSession session = request.getSession();
 		if(!CommonHelper.isLoggedIn(request)) {
 			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY, AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_INTERNAL));
-			return new ModelAndView("redirect:index.jsp");
+			return new ModelAndView("index");
 		}
 		String userName = (String) session.getAttribute(ApplicationConstants.USERNAME_KEY);
 		if(StringUtils.isBlank(userName)) {
 			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY, "Something went wrong. Please login again");
-			return new ModelAndView("redirect:index.jsp");
+			return new ModelAndView("index");
 		}
 		try {
 			ModelAndView mView = new ModelAndView();
