@@ -47,14 +47,6 @@ $(document).ready(function () {
 	});
 });
 
-$(window).scroll(function() {
-	var wScroll = $(this).scrollTop();
-	console.log(wScroll);
-	$('.app-name').css({
-		'transform' : 'translate(0,'+wScroll*0.7+'px)'
-	});
-});
-
 function checkLogin() {
 	var username  = $('#login-username').val();
 	var password = $('#login-password').val();

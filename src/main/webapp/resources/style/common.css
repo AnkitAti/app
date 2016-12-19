@@ -1,13 +1,12 @@
 @CHARSET "ISO-8859-1";
 
-input[type=text], input[type=password], input[type=email] {
-	border: 0.5px solid rgba(10,10,10,0.2);
-	transition: all 100ms ease-out;
-	-webkit-appearance: none;
+nav {
+	background: #ff4500;
+	background: orangered;
+	background: rgba(255,69,0,0.8);
+	height: 10px;
 }
-input[type=text]:hover, input[type=password]:hover, input[type=email]:hover {
-	border: 0.8px solid rgba(10,10,10,0.6);
-}
-input[type=text]:hover, input[type=password]:hover, input[type=email]:hover {
-	
+.content {
+	width: 96%;
+	margin: 60px auto 0 auto;
 }

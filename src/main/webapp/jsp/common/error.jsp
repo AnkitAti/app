@@ -20,45 +20,40 @@ body {
 	margin: 20px;
 	text-align: center;
 }
-.info span:hover{
-	color:deepskyblue;
-	font-weight: bold;
-}
 .image {
 	display: inline-block;
 }
 .face {
 	margin: 50px 0;
-	border: 5px solid black;
-	height: 200px;
-	width: 200px;
+	border: 8px solid black;
+	height: 100px;
+	width: 100px;
 	border-radius: 50%;
 	position: relative;
 }
 .eye {
 	position: absolute;
 	display: inline-block;
-	width: 30px;
-	height: 30px;
+	width: 15px;
+	height: 15px;
 	border-radius: 50%;
 	background-color: black;
 }
 .face .eye:nth-child(1) {
-	left: 28px;
-	top: 50px;
+	left: 18px;
+	top: 25px;
 }
 .face .eye:nth-child(3) {
-	left: 138px;
-	top: 50px;
+	left: 68px;
+	top: 25px;
 }
 .mouth {
 	position: absolute;
-	top: 100px;
-	left: 50px;
-	margin-top: 40px;	
+	top: 65px;
+	left: 18px;
 	display: inline-block;
-	width: 80px;
-	height: 80px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
 	border:8px solid transparent;
 	border-top-color: black;
@@ -68,10 +63,6 @@ body {
 <body>
 	<div class="content">
 		<h1>Oops....Something went wrong!!</h1>
-		<div class="info"> The URL you are looking for seems to be broken or does not exist. If you think something's wrong with us, please feel free to write
-		us at <span class="email">lookacook@gmail.com</span>. We'll make sure to fix the issue and reply to you as soon as possible.
-		</div>
-		
 		<div class="image">
 			<div class="face">
 				<div class="eye"></div>
@@ -80,6 +71,7 @@ body {
 			</div>
 			<div class="msg">
 				<h1>404</h1>
+				<h4>Page Not Found</h4>
 			</div>
 		</div>
 	</div>

@@ -23,6 +23,14 @@ public class CommonController {
 	@Autowired private LoginService loginService;
 	@Autowired private SignupService signupService;
 	
+	@RequestMapping(value="/", method={RequestMethod.POST, RequestMethod.GET}) 
+	public String context(HttpServletRequest request) {
+		if(CommonHelper.isLoggedIn(request)) {
+			return "user/home";
+		}
+		return "index";
+	}
+	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@RequestParam String username, @RequestParam String password, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
@@ -46,11 +54,11 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String dummyLogin(HttpServletRequest request) {
+	public String loginGet(HttpServletRequest request) {
 		if(CommonHelper.isLoggedIn(request)) {
 			return "user/home";
 		}
-		return "redirect:index";
+		return "index";
 	}
 	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
@@ -71,6 +79,11 @@ public class CommonController {
 			return "index";
 		}
 		return "user/home";
+	}
+	
+	@RequestMapping(value="/signup", method=RequestMethod.GET)
+	public String signupGet(HttpServletRequest request) {
+		return "index";
 	}
 	
 	@RequestMapping (value="/logout", method= { RequestMethod.GET, RequestMethod.POST })

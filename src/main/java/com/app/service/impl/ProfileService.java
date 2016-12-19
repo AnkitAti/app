@@ -30,10 +30,7 @@ public class ProfileService {
 	@Transactional
 	public UserDescription fetchProfileDetails(String username) throws ApplicationException {
 		logger.trace("Entering "+ProfileService.class + ".fetchProfileDetails method");
-		db.setUsername(username);
-		UserDescription user = db.getUserDetails();
-		if(user!=null)
-			user.setId(-1); //This user will be set in session or request. To remove the unnecessary information from the object.
+		UserDescription user = db.getUserDetails(username);
 		return user;
 	}
 }

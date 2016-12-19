@@ -35,10 +35,6 @@ public class SignupService {
 			user.setPassword(password);
 			user.setSalt(salt);
 			
-			System.out.println(user.getPassword().length());
-			System.out.println(user.getSalt().length());
-			
-			
 			boolean signupSuccessful = signupDB.signupQuery(user);
 			logger.trace("Exiting SignupService.signup");
 			

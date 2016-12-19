@@ -10,9 +10,15 @@
 <body>
 	<div class="main-content">
 		<div class="left-pane">
-			<h1 class="app-name">Search Cooks</h1>
+			<div class="parallex first"></div>			
 			<div class="main-panel">
+				<h1 class="app-name">Search Cooks</h1>	
+				<h4>No Cook! No Food!</h4>
+				<p>We understand that food is one of the most basic need of human. And it is not easy to 
+				work and cook as well. So give us a chance to help you.
+				Login and book a cook now and get rid of the disturbing thoughts.</p>
 			</div>
+			<div class="parallex second"></div>
 		</div>
 		<div class="right-pane">
 			<div class="list">

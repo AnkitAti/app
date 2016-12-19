@@ -1,17 +1,69 @@
 @CHARSET "ISO-8859-1";
 
-@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Delius+Unicase|Nunito|Ravi+Prakash');
+/* @import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Delius+Unicase|Nunito|Ravi+Prakash'); */
+/* bungee-inline-regular - latin */
+@font-face {
+  font-family: 'Bungee Inline';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/bungee-inline-v2-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Bungee Inline'), local('BungeeInline-Regular'),
+       url('../fonts/bungee-inline-v2-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/bungee-inline-v2-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/bungee-inline-v2-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/bungee-inline-v2-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/bungee-inline-v2-latin-regular.svg#BungeeInline') format('svg'); /* Legacy iOS */
+}
+/* delius-unicase-regular - latin */
+@font-face {
+  font-family: 'Delius Unicase';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/delius-unicase-v9-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Delius Unicase'), local('DeliusUnicase-Regular'),
+       url('../fonts/delius-unicase-v9-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/delius-unicase-v9-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/delius-unicase-v9-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/delius-unicase-v9-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/delius-unicase-v9-latin-regular.svg#DeliusUnicase') format('svg'); /* Legacy iOS */
+}
+/* maven-pro-regular - latin */
+@font-face {
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/maven-pro-v7-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Maven Pro Regular'), local('MavenProRegular'),
+       url('../fonts/maven-pro-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/maven-pro-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/maven-pro-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/maven-pro-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/maven-pro-v7-latin-regular.svg#MavenPro') format('svg'); /* Legacy iOS */
+}
+/* nunito-regular - latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/nunito-v7-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Nunito-Regular'),
+       url('../fonts/nunito-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/nunito-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/nunito-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/nunito-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/nunito-v7-latin-regular.svg#Nunito') format('svg'); /* Legacy iOS */
+}
 
 body {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Open Sans Condensed", sans-serif;
   font-family: 'Nunito', sans-serif;
   margin: 0;
-  height: 1000px;
+  height: 100%;
 }
 h1 {
 	font-family: 'Delius Unicase', cursive;
 	font-weight: bold;
-	color: white;
+	color: orangered;
 	font-size: 350%;
 }
 .main-container {
@@ -21,15 +73,36 @@ h1 {
 }
 
 .left-pane {
-  background-image: url(../images/food.jpg);
-  background-attachment: fixed;
-  backgroud-size: cover;
-  background-repeat: no-repeat;
   display: inline-block;
   width: 70%;
   height: 1000px;
   text-align: center;
   position: relative;
+  border-right: 1px solid orangered;
+}
+.main-panel {
+	background: white;
+	padding: 20px;
+	height: 300px;
+}
+.main-panel p, .main-panel h4{
+	text-align: left;
+}
+.first {
+	background-image: url(../images/food.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.second {
+	background-image: url(../images/img.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.parallex {
+	height: 350px;	
 }
 @media screen and (max-width: 770px) {
   .left-pane {
