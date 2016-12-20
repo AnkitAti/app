@@ -13,4 +13,5 @@ public class PropertiesConstants {
 	public static final String LOGIN_ERROR_PWD		= "login.error.password";
 	
 	public static final String LOGIN_ERROR_INTERNAL = "login.error.internal";
+	public static final String LOGIN_ERROR_REQUIRED	= "login.error.required";
 }

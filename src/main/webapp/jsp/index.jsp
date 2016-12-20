@@ -32,6 +32,9 @@
 					<form action="login" class="form-design" method="post" onsubmit="return checkLogin()">
 						<input type="text" name="username"  placeholder="Username" id="login-username"/> 
 						<input type="password" name="password" placeholder="Password" id="login-password"/>
+						<c:if test="${not empty param.redirect}">
+							<input type="hidden" name="redirect" value="<c:out value="${param.redirect}" />" >
+						</c:if>
 						<input type="submit" class="btn" value="Login">
 					</form>
 					<div class="error">

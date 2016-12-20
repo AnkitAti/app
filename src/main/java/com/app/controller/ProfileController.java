@@ -27,8 +27,8 @@ public class ProfileController {
 	public ModelAndView displayProfile(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if(!CommonHelper.isLoggedIn(request)) {
-			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY, AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_INTERNAL));
-			return new ModelAndView("index");
+			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY, AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_REQUIRED));
+			return new ModelAndView("redirect:/login?redirect=profile");
 		}
 		String userName = (String) session.getAttribute(ApplicationConstants.USERNAME_KEY);
 		if(StringUtils.isBlank(userName)) {
