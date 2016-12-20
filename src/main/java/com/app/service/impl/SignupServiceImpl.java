@@ -8,21 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.factory.SignupDao;
 import com.app.factory.beans.User;
-import com.app.factory.impl.CommonServicesDAO;
-import com.app.factory.impl.SignupDAO;
+import com.app.factory.impl.CommonServicesDao;
 import com.app.security.HashService;
 
 @Service
-public class SignupService {
+public class SignupServiceImpl {
 
-	public static final Logger logger = LogManager.getLogger(SignupService.class);
+	public static final Logger logger = LogManager.getLogger(SignupServiceImpl.class);
 	
 	@Autowired
-	private CommonServicesDAO commonServices;
+	private CommonServicesDao commonServices;
 	
 	@Autowired
-	private SignupDAO signupDB;
+	private SignupDao signupDB;
 	
 	@Transactional
 	public boolean signup(User user) {
@@ -30,14 +30,11 @@ public class SignupService {
 		try {
 			String salt = HashService.getSalt();
 			String password = user.getPassword();
-			
 			password = HashService.sha256Hash(password+salt);
 			user.setPassword(password);
 			user.setSalt(salt);
-			
 			boolean signupSuccessful = signupDB.signupQuery(user);
 			logger.trace("Exiting SignupService.signup");
-			
 			return signupSuccessful;
 		} catch (NoSuchAlgorithmException e) {
 			logger.debug("Exception Caught : " + e);

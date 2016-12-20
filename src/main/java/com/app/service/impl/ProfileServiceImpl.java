@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.error.ApplicationException;
-import com.app.factory.ProfileInterface;
+import com.app.factory.ProfileDao;
 import com.app.factory.beans.UserDescription;
 
 /**
@@ -16,11 +16,11 @@ import com.app.factory.beans.UserDescription;
  * @version 1.0
  */
 @Service
-public class ProfileService {
+public class ProfileServiceImpl {
 	
-	private static final Logger logger = LogManager.getLogger(ProfileService.class);
+	private static final Logger logger = LogManager.getLogger(ProfileServiceImpl.class);
 	@Autowired
-	private ProfileInterface db;
+	private ProfileDao db;
 	
 	/**
 	 * This method provides the implementation of getting the user details of the user with the specific username.
@@ -29,8 +29,7 @@ public class ProfileService {
 	 */
 	@Transactional
 	public UserDescription fetchProfileDetails(String username) throws ApplicationException {
-		logger.trace("Entering "+ProfileService.class + ".fetchProfileDetails method");
-		UserDescription user = db.getUserDetails(username);
-		return user;
+		logger.trace("Entering "+ProfileServiceImpl.class + ".fetchProfileDetails method");
+		return db.getProfileDetails(username);
 	}
 }

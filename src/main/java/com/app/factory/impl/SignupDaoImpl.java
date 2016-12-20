@@ -5,34 +5,29 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import org.springframework.stereotype.Service;
-
-import com.app.factory.SignupInterface;
+import com.app.factory.SignupDao;
 import com.app.factory.beans.User;
 
-@Service
-public class SignupDAO implements SignupInterface{
-	public static final Logger logger = LogManager.getLogger(SignupDAO.class);
+@Repository
+public class SignupDaoImpl implements SignupDao {
+
+	public static final Logger logger = LogManager.getLogger(SignupDaoImpl.class);
 	
-	@Autowired
-	private SessionFactory sessionFactory;
+	@Autowired private SessionFactory sessionFactory;
 	
 	public boolean signupQuery(User user) {
-		logger.trace("Entering SignupDAO.signupQuery");
-		
+		logger.trace("Entering SignupDaoImpl.signupQuery");
 		Session session = sessionFactory.getCurrentSession();
-
 		try { 
 			session.save(user); 
 		} 
-		
 		catch (Exception ex) {
-			logger.debug("Exception Caught in SignupDAO.signupQuery while saving the object in db." + ex);
+			logger.debug("Exception Caught in SignupDaoImpl.signupQuery while saving the object in db." + ex);
 			return false;
 		} 
-		
-		logger.trace("Exiting SignupDAO.signupQuery");
+		logger.trace("Exiting SignupDaoImpl.signupQuery");
 		return true;  //Return true if everything goes right
 	}
 }

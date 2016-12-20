@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.factory.LoginDao;
-import com.app.factory.beans.UserDescription;
 import com.app.security.HashService;
 import com.app.service.LoginService;
 
@@ -57,15 +56,6 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	public String getUserName() {
 		return loginDB.getUserName();
-	}
-	
-	/**
-	 * To get the details of the logged in user
-	 * @param username
-	 * @return UserDescription
-	 */
-	public UserDescription getUserDetails(String username) {
-		return null;
 	}
 	
 	/**

@@ -14,7 +14,7 @@ import com.app.constants.ApplicationConstants;
 import com.app.constants.PropertiesConstants;
 import com.app.error.ApplicationException;
 import com.app.factory.beans.UserDescription;
-import com.app.service.impl.ProfileService;
+import com.app.service.ProfileService;
 import com.app.util.AppConfig;
 import com.app.util.CommonHelper;
 
@@ -37,8 +37,8 @@ public class ProfileController {
 		}
 		try {
 			ModelAndView mView = new ModelAndView();
-			UserDescription user = service.fetchProfileDetails(userName);
-			mView.addObject(ApplicationConstants.USER_DESC, user);
+			UserDescription userDesc = service.fetchProfileDetails(userName);
+			mView.addObject(ApplicationConstants.USER_DESC, userDesc);
 			mView.setViewName("user/profile");
 			return mView;
 		} catch(ApplicationException e) {

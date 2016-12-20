@@ -7,7 +7,7 @@ import com.app.factory.beans.User;
  * @author Ankit
  * @version 1.0
  */
-public interface SignupInterface {
+public interface SignupDao {
 	
 	/**
 	 * Insert the USER data into the USERS database.

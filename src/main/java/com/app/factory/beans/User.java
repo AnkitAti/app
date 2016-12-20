@@ -43,6 +43,12 @@ public class User implements Serializable {
 	@Column(name="salt")
 	private String salt;
 	
+	@Column(name="type")
+	private String type;
+	
+	@Column(name="active")
+	private String active;
+	
 	public long getId() {
 		return this.id;
 	}
@@ -79,5 +85,19 @@ public class User implements Serializable {
 	}
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public String getActive() {
+		return this.active;
+	}
+	public void setActive(String active) {
+		this.active = active;
 	}
 }

@@ -16,8 +16,10 @@
 			</div>
 			<div class="info">
 				<p> Username: <c:out value="${userDesc.user.username }" /></p>
+				<p> Email: <c:out value="${userDesc.user.email}"/> </p>
 				<p> Name: <c:out value="${userDesc.firstName }" /> <c:out value="${userDesc.lastName}" /></p>
-				
+				<p> Gender: <c:out value="${userDesc.gender}" /> </p>
+				<p> Phone: <c:out value="${userDesc.phone }" /></p>
 			</div>
 		</div>
 		
