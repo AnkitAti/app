@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.error.ApplicationException;
 import com.app.factory.ProfileDao;
 import com.app.factory.beans.UserDescription;
+import com.app.service.ProfileService;
 
 /**
  * This class provides the services related to the Profile of an User. Editing the profile, viewing the profile and others are managed by this class.
@@ -16,7 +17,7 @@ import com.app.factory.beans.UserDescription;
  * @version 1.0
  */
 @Service
-public class ProfileServiceImpl {
+public class ProfileServiceImpl implements ProfileService {
 	
 	private static final Logger logger = LogManager.getLogger(ProfileServiceImpl.class);
 	@Autowired

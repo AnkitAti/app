@@ -12,9 +12,10 @@ import com.app.factory.SignupDao;
 import com.app.factory.beans.User;
 import com.app.factory.impl.CommonServicesDao;
 import com.app.security.HashService;
+import com.app.service.SignupService;
 
 @Service
-public class SignupServiceImpl {
+public class SignupServiceImpl implements SignupService {
 
 	public static final Logger logger = LogManager.getLogger(SignupServiceImpl.class);
 	
