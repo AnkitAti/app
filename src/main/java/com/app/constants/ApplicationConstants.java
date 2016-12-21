@@ -26,6 +26,10 @@ public class ApplicationConstants {
 	public static final String USERNAME_KEY                =      "username";         //Key for storing username in session
 	//****************List of keys for messages to be displayed in page**************************//
 	
-	
-	public static final String USER_DESC 	=	"userDesc";
+	//****************List of Keys for sending parameters or information to page****************//
+	public static final String USER_DESC 		=	"userDesc";
+	public static final String LOGIN_USERNAME	= 	"usernameLogin";
+	public static final String SIGNUP_USERNAME	=	"usernameSignup";
+	public static final String SIGNUP_EMAIL		=	"usernameEmail";
+	//****************List of Keys for sending parameters or information to page****************//
 }

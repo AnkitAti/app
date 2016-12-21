@@ -45,6 +45,9 @@ $(document).ready(function () {
 		});
 		return false;
 	});
+	if($('#show-signup').length > 0) {
+		$("#register-id").trigger('click');
+	}
 });
 
 function checkLogin() {

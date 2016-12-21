@@ -26,9 +26,11 @@ public class SignupController {
 		user.setEmail(email);
 		user.setActive("Y");
 		if(signupService.usernameExists(user.getUsername())) {
+			request.setAttribute(ApplicationConstants.SIGNUP_EMAIL, email);
 			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY_SIGNUP, "Username already exists. Please try signing up with some other username.");
 			return "index";
 		} else if(signupService.emailExists(user.getEmail())) {
+			request.setAttribute(ApplicationConstants.SIGNUP_USERNAME, username);
 			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY_SIGNUP,"Email ID already exists. Please try signing up with some other Email ID.");
 			return "index";
 		}

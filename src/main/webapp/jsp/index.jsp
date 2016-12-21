@@ -30,7 +30,7 @@
 				</ul>
 				<div class="login">
 					<form action="login" class="form-design" method="post" onsubmit="return checkLogin()">
-						<input type="text" name="username"  placeholder="Username" id="login-username"/> 
+						<input type="text" name="username"  placeholder="Username" id="login-username" value="<c:out value="${usernameLogin}"/>" /> 
 						<input type="password" name="password" placeholder="Password" id="login-password"/>
 						<c:if test="${not empty param.redirect}">
 							<input type="hidden" name="redirect" value="<c:out value="${param.redirect}" />" >
@@ -45,14 +45,15 @@
 				</div>
 				<div class="register hide">
 					<form action="signup" class="form-design" method="post" onsubmit="return checkSignup()">
-						<input type="text" name="username" placeholder="Username" id="signup-username"/>
-						<input type="email" name="email" placeholder="Email" id="signup-email"/> 
+						<input type="text" name="username" placeholder="Username" id="signup-username" value="<c:out value="${usernameSignup}"/>" />
+						<input type="email" name="email" placeholder="Email" id="signup-email" value="<c:out value="${emailSignup}"/>" /> 
 						<input type="password" name="password" placeholder="Password" id="signup-password"/> 
 						<input type="submit" class="btn" value="Register">
 					</form>
 					<div class="error">
 						<c:if test="${not empty errorSignup}">
 							<h3><c:out value="${errorSignup}" /></h3>
+							<div id="show-signup"></div>
 						</c:if>
 					</div>
 				</div>

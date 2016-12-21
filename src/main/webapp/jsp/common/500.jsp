@@ -7,6 +7,6 @@
 </head>
 <body>
 	<h1>Oh...Something went wrong.</h1>
-	<h3>Go to <a href="/">Home page</a></h3>
+	<h3>Go to <a href="login">Home page</a></h3>
 </body>
 </html>

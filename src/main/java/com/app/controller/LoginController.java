@@ -30,6 +30,7 @@ public class LoginController {
 		boolean verifyCredentials = loginService.validateLogin(username, password);
 		if(!verifyCredentials) {
 			if (loginService.usernameExist()) {
+				request.setAttribute(ApplicationConstants.LOGIN_USERNAME, username);
 				message = AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_PWD);
 			} else {
 				message = AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_USERNAME);
