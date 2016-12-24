@@ -215,4 +215,23 @@ h1 {
 	color: rgba(255, 0, 0, 0.8);
 }
 
+/*Login and Signup Page*/
+
+.box {
+	width: 30%;
+	margin: 20px auto;
+	background: #eee;
+	padding: 20px;
+	text-align: center;
+	border: 2px solid orangered;
+}
+
+.info {
+	margin: 20px;
+}
+
+.info a {
+	text-decoration: none;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -35,6 +35,7 @@
 						<c:if test="${not empty param.redirect}">
 							<input type="hidden" name="redirect" value="<c:out value="${param.redirect}" />" >
 						</c:if>
+						<input type="hidden" name="from" value="index">
 						<input type="submit" class="btn" value="Login">
 					</form>
 					<div class="error">

@@ -21,12 +21,13 @@ public class LoginController {
 	@Autowired private LoginService loginService;
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@RequestParam String username, @RequestParam String password, @RequestParam(required=false) String redirect, HttpServletRequest request) {
+	public String login(@RequestParam String username, @RequestParam String password, @RequestParam(required=false) String redirect,
+			@RequestParam(required=false) String from, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
-		String message;
 		if(CommonHelper.isLoggedIn(request)) {
 			return "user/home";
 		}
+		String message;
 		boolean verifyCredentials = loginService.validateLogin(username, password);
 		if(!verifyCredentials) {
 			if (loginService.usernameExist()) {
@@ -36,6 +37,9 @@ public class LoginController {
 				message = AppConfig.getProperty(PropertiesConstants.LOGIN_ERROR_USERNAME);
 			}
 			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY_LOGIN, message);
+			if(from != null) {
+				return from;
+			}
 			return "index";
 		}
 		username = loginService.getUserName();
@@ -44,7 +48,7 @@ public class LoginController {
 		if(redirect != null) {
 			return "redirect:/"+redirect;
 		}
-		return "user/home";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
@@ -52,6 +56,6 @@ public class LoginController {
 		if(CommonHelper.isLoggedIn(request)) {
 			return "user/home";
 		}
-		return "index";
+		return "login";
 	}
 }
