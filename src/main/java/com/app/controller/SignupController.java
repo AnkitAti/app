@@ -41,7 +41,7 @@ public class SignupController {
 		HttpSession session = request.getSession();
 		session.setAttribute(ApplicationConstants.LOGGED_IN_KEY, ApplicationConstants.LOGGED_IN_VALUE);
 		session.setAttribute(ApplicationConstants.USERNAME_KEY,username);
-		return "user/home";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/signup", method=RequestMethod.GET)

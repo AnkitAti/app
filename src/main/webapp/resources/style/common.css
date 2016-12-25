@@ -21,8 +21,10 @@ nav {
 	height: 10px;
 }
 .content {
-	width: 96%;
-	margin: 60px auto 0 auto;
+	width: 90%;
+	margin-top: 60px;
+	margin-left: auto;
+	margin-right: auto;
 	font-family: 'Maven Pro';
 }
 
@@ -40,4 +42,35 @@ nav {
 }
 .info {
 	font-size: 1.2em;
+}
+.image {
+	width: 150px;
+	height: 180px;
+	margin: 8px;
+	background: url("No Image");
+	border: 2px solid orangered;
+}
+
+.navbar-fixed-bottom {
+	background: orangered ;
+}
+.navbar-fixed-bottom a {
+	text-decoration: none;
+	color: white !important;
+}
+.navbar-fixed-bottom a:hover {
+	color: black !important;
+}
+
+.left-pane {
+	width: 15%;
+	display: inline-block;
+}
+.middle-pane {
+	width: 55%;
+	display: inline-block;
+}
+.right-pane {
+	width: 15%;
+	display: inline-block;
 }

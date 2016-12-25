@@ -55,13 +55,17 @@ function checkLogin() {
 	var password = $('#login-password').val();
 	
 	if(username==null || username=="") {
-		$("#login-username").parent().addClass("has-error");
+		$("#login-username").addClass("has-error");
 		return false;
+	} else {
+		$("#login-username").removeClass("has-error");
 	}
 	
 	if(password==null || password=="") {
-		$('#login-password').parent().addClass("has-error");
+		$('#login-password').addClass("has-error");
 		return false;
+	} else {
+		$('#login-password').removeClass("has-error");
 	}
 	
 	return true;
@@ -73,18 +77,24 @@ function checkSignup() {
 	var password = $('#signup-password').val();
 	
 	if(username==null || username=="") {
-		$('#signup-username').parent().addClass("has-error");
+		$('#signup-username').addClass("has-error");
 		return false;
+	} else {
+		$('#signup-username').removeClass("has-error");
 	}
 	
 	if(email==null || email=="") {
-		$("#signup-email").parent().addClass("has-error");
+		$("#signup-email").addClass("has-error");
 		return false;
+	} else {
+		$("#signup-email").removeClass("has-error");
 	}
 	
 	if(password==null || password=="") {
-		$("#signup-password").parent().addClass("has-error");
+		$("#signup-password").addClass("has-error");
 		return false;
+	} else {
+		$("#signup-password").removeClass("has-error");
 	}
 	return true;
 }

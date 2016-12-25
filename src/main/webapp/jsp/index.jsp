@@ -30,7 +30,7 @@
 				</ul>
 				<div class="login">
 					<form action="login" class="form-design" method="post" onsubmit="return checkLogin()">
-						<input type="text" name="username"  placeholder="Username" id="login-username" value="<c:out value="${usernameLogin}"/>" /> 
+						<input type="text" name="username" placeholder="Username or Email" id="login-username" value="<c:out value="${usernameLogin}"/>" /> 
 						<input type="password" name="password" placeholder="Password" id="login-password"/>
 						<c:if test="${not empty param.redirect}">
 							<input type="hidden" name="redirect" value="<c:out value="${param.redirect}" />" >

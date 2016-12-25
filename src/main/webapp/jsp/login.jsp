@@ -13,8 +13,8 @@
 		<div class="box">
 			<h2>Login</h2>
 			<form class="form-design" action="login" method="post" onsubmit="return checkLogin()">
-	        	<input id="login-username" type="text" class="validate" name="username" placeholder="Username or Email" value="<c:out value="${usernameLogin}"/>">
-	        	<input id="login-password" type="password" name="password" placeholder="Password" class="validate">
+	        	<input id="login-username" type="text" name="username" placeholder="Username or Email" value="<c:out value="${usernameLogin}"/>">
+	        	<input id="login-password" type="password" name="password" placeholder="Password">
 			    <c:if test="${not empty param.redirect}">
 					<input type="hidden" name="redirect" value="<c:out value="${param.redirect}" />" >
 				</c:if>
@@ -23,7 +23,11 @@
 			</form>
 			<div class="error">
 				<c:if test="${not empty errorLogin}">
-					<h3><c:out value="${errorLogin}" /></h3>
+					<h3>${errorLogin}</h3>
+				</c:if>
+				<c:if test="${not empty sessionScope.error}">
+					<h3>${sessionScope.error}</h3>
+					<c:remove var="error" scope="session" />
 				</c:if>
 			</div>
 			<div class="info">

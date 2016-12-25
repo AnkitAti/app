@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.app.constants.ApplicationConstants;
 import com.app.util.CommonHelper;
 
 @Controller
@@ -23,9 +24,11 @@ public class CommonController {
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
+			session.removeAttribute(ApplicationConstants.LOGGED_IN_KEY);
+			session.removeAttribute(ApplicationConstants.USERNAME_KEY);
 			session.invalidate();
 		}
-		return "index";
+		return "redirect:/";
 	}
 	
 }
