@@ -76,25 +76,36 @@ function checkSignup() {
 	var email = $('#signup-email').val();
 	var password = $('#signup-password').val();
 	
-	if(username==null || username=="") {
+	if(username==null || username=="" || username.trim()=="") {
 		$('#signup-username').addClass("has-error");
 		return false;
 	} else {
 		$('#signup-username').removeClass("has-error");
 	}
 	
-	if(email==null || email=="") {
+	if(email==null || email=="" || (!validateEmail(email))) {
 		$("#signup-email").addClass("has-error");
+		$('#signup-email').css({'color' : 'red'});
 		return false;
 	} else {
 		$("#signup-email").removeClass("has-error");
 	}
 	
-	if(password==null || password=="") {
+	if(password==null || password.trim()=="" || password.trim().length < 3) {
 		$("#signup-password").addClass("has-error");
 		return false;
 	} else {
 		$("#signup-password").removeClass("has-error");
 	}
 	return true;
+}
+
+function validateEmail(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+}
+if(typeof String.prototype.trim !== 'function') {
+  String.prototype.trim = function() {
+    return this.replace(/^\s+|\s+$/g, ''); 
+  }
 }

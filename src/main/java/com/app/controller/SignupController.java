@@ -20,6 +20,18 @@ public class SignupController {
 	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public String signup(@RequestParam String username, @RequestParam String password, @RequestParam String email, HttpServletRequest request) {
+		if(username == null || username.trim().equals("")) {
+			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY_SIGNUP, "Invalid username");
+			return "index";
+		}
+		if(email == null || email.trim().equals("")) {
+			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY_SIGNUP, "Invalid email");
+			return "index";
+		}
+		if(password == null || password.trim().equals("") || password.trim().length() < 5) {
+			request.setAttribute(ApplicationConstants.ERROR_MESSAGE_KEY_SIGNUP, "Invalid password");
+			return "index";
+		}
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
