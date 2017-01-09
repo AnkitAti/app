@@ -78,7 +78,6 @@ h1 {
   height: 1000px;
   text-align: center;
   position: relative;
-  border-right: 1px solid orangered;
 }
 .main-panel {
 	background: white;
@@ -89,13 +88,13 @@ h1 {
 	text-align: left;
 }
 .first {
-	background-image: url(../images/food.jpg);
+	background-image: url(../images/breakfast1.jpg);
 	background-attachment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .second {
-	background-image: url(../images/img.jpg);
+	background-image: url(../images/breakfast2.jpg);
 	background-attachment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -117,6 +116,7 @@ h1 {
   height: 700px;
   position: fixed;
   overflow: hidden;
+  border-left: 1.2px solid orangered;
 }
 @media screen and (max-width: 770px) {
   .right-pane {
@@ -213,11 +213,15 @@ h1 {
 }
 .error {
 	color: rgba(255, 0, 0, 0.8);
+	border: 0.5px solid red;
+	border-radius: 6px;
+	background: rgba(240, 0, 0, 0.2);
+	margin: 10px;
 }
 .has-error {
 	border: 1px solid red !important;
 	position: relative;
-	animation: vibrate 150ms linear;
+	animation: vibrate 300ms linear;
 }
 @keyframes vibrate {
 	0%	{ transform: translateX(-25px);	}

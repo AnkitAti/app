@@ -38,11 +38,11 @@
 						<input type="hidden" name="from" value="index">
 						<input type="submit" class="btn" value="Login">
 					</form>
-					<div class="error">
-						<c:if test="${not empty errorLogin}">
+					<c:if test="${not empty errorLogin}">
+						<div class="error">
 							<h3><c:out value="${errorLogin}" /></h3>
-						</c:if>
-					</div>
+						</div>
+					</c:if>
 				</div>
 				<div class="register hide">
 					<form action="signup" class="form-design" method="post" onsubmit="return checkSignup()">
@@ -51,17 +51,19 @@
 						<input type="password" name="password" placeholder="Password" id="signup-password"/> 
 						<input type="submit" class="btn" value="Register">
 					</form>
-					<div class="error">
-						<c:if test="${not empty errorSignup}">
+					<c:if test="${not empty errorSignup}">
+						<div class="error">
 							<h3><c:out value="${errorSignup}" /></h3>
-							<div id="show-signup"></div>
-						</c:if>
-					</div>
-				</div>
-				<div class="error">
-					<c:if test="${not empty error}">
-						<h3><c:out value="${error}"/></h3>
+						</div>
+						<div id="show-signup"></div>
 					</c:if>
+				</div>
+				<c:if test="${not empty error}">
+					<div class="error">
+						<h3><c:out value="${error}"/></h3>
+					</div>
+				</c:if>
+				<div id="error-msg">
 				</div>
 			</div>
 		</div>

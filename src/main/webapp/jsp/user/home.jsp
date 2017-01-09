@@ -20,12 +20,12 @@
 				<h1>Search</h1>
 				<form>
 					<div class="input-field col-lg-6 col-md-6 col-sm-6 col-xs-12">
-	          			<input id="state" type="text" class="validate">
-	          			<label for="state">Enter State</label>
-	        		</div>
-	        		<div class="input-field col-lg-6 col-md-6 col-sm-6 col-xs-12">
 	          			<input id="city" type="text" class="validate">
 	          			<label for="city">Enter City</label>
+	        		</div>
+	        		<div class="input-field col-lg-6 col-md-6 col-sm-6 col-xs-12">
+	          			<input id="place" type="text" class="validate">
+	          			<label for="place">Enter Place</label>
 	        		</div>
 					<button type="submit" id="search" class="waves-effect waves-light btn">Search Cook</button>
 				</form>

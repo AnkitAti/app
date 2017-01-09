@@ -12,14 +12,14 @@ $(document).ready(function () {
 			opacity : 0,
 			scale : 0
 		}, {
-			duration : 500,
+			duration : 200,
 			complete : function() {
 				$('.register').addClass('hide');
 				$('.login').removeClass('hide');
 				$('.login').animate({
 					opacity : 1,
 					scale : 1
-				}, 500);
+				}, 200);
 			}
 		});
 		return false;
@@ -33,13 +33,13 @@ $(document).ready(function () {
 			opacity : 0,
 			scale : 0
 		}, {
-			duration : 500,
+			duration : 200,
 			complete : function() {
 				$('.login').addClass('hide');
 				$('.register').animate({
 					opacity : 1,
 					scale : 1
-				}, 500);
+				}, 200);
 				$('.register').removeClass('hide');
 			}
 		});
@@ -53,16 +53,19 @@ $(document).ready(function () {
 function checkLogin() {
 	var username  = $('#login-username').val();
 	var password = $('#login-password').val();
-	
-	if(username==null || username=="") {
+	$("#login-username").removeClass("has-error");
+	$("#login-password").removeClass("has-error");
+	if(username==null || username.trim()=="") {
 		$("#login-username").addClass("has-error");
+		setErrorMsg('Please enter a valid username');
 		return false;
 	} else {
 		$("#login-username").removeClass("has-error");
 	}
 	
-	if(password==null || password=="") {
+	if(password==null || password.trim()=="") {
 		$('#login-password').addClass("has-error");
+		setErrorMsg('Please enter a valid password');
 		return false;
 	} else {
 		$('#login-password').removeClass("has-error");
@@ -76,28 +79,41 @@ function checkSignup() {
 	var email = $('#signup-email').val();
 	var password = $('#signup-password').val();
 	
+	$("#signup-username").removeClass("has-error");
+	$("#signup-email").removeClass("has-error");
+	$("#signup-password").removeClass("has-error");
 	if(username==null || username=="" || username.trim()=="") {
 		$('#signup-username').addClass("has-error");
+		setErrorMsg('Please enter a valid username');
 		return false;
 	} else {
 		$('#signup-username').removeClass("has-error");
 	}
 	
-	if(email==null || email=="" || (!validateEmail(email))) {
+	if(email==null || email.trim()=="" || (!validateEmail(email))) {
 		$("#signup-email").addClass("has-error");
 		$('#signup-email').css({'color' : 'red'});
+		setErrorMsg('Please enter a valid email');
 		return false;
 	} else {
 		$("#signup-email").removeClass("has-error");
 	}
 	
-	if(password==null || password.trim()=="" || password.trim().length < 3) {
+	if(password==null || password.trim()=="" || password.trim().length < 5) {
 		$("#signup-password").addClass("has-error");
+		setErrorMsg('Please enter a valid password');
 		return false;
 	} else {
 		$("#signup-password").removeClass("has-error");
 	}
 	return true;
+}
+
+function setErrorMsg(msg) {
+	if($('.error').length <= 0)
+		$('#error-msg').html('<div class="error"><h3>'+msg+'</h3></div>');
+	else 
+		$('.error').html('<h3>' + msg + '</h3>');
 }
 
 function validateEmail(email) {

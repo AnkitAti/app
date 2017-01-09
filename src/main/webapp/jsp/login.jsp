@@ -21,14 +21,18 @@
 				<input type="hidden" name="from" value="login">
 				<input type="submit" class="btn" value="Login">
 			</form>
-			<div class="error">
-				<c:if test="${not empty errorLogin}">
+			<c:if test="${not empty errorLogin}">
+				<div class="error">
 					<h3>${errorLogin}</h3>
-				</c:if>
-				<c:if test="${not empty sessionScope.error}">
+				</div>
+			</c:if>
+			<c:if test="${not empty sessionScope.error}">
+				<div class="error">
 					<h3>${sessionScope.error}</h3>
-					<c:remove var="error" scope="session" />
-				</c:if>
+				</div>
+				<c:remove var="error" scope="session" />
+			</c:if>
+			<div id="error-msg">
 			</div>
 			<div class="info">
 				<em>Don't have account? <a href="signup">Signup. It's free!</a></em>
